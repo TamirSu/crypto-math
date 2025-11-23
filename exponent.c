@@ -1,15 +1,21 @@
 #include "exponent.h"
+#include <stddef.h>
 
-unsigned long long Exponent(long long x, long long e, long long p) {
-    unsigned long long result = 1;
-    unsigned long long base = x % p;
+unsigned long long Exponent(long long x, long long e, long long m) {
+    if (m <= 0) return 0;
+    if (e < 0) return 0; /* negative exponents not supported here */
+
+    unsigned long long mod = (unsigned long long)m;
+    unsigned long long base = (unsigned long long)((x % m + m) % m);
+    unsigned long long res = 1 % mod;
 
     while (e > 0) {
         if (e & 1) {
-            result = (result * base) % p;
+            res = (unsigned long long)((__uint128_t)res * base % mod);
         }
-        base = (base * base) % p;
-        e >>= 1;  // divide exponent by 2
+        base = (unsigned long long)((__uint128_t)base * base % mod);
+        e >>= 1;
     }
-    return result;
+
+    return res;
 }

@@ -1,12 +1,9 @@
-// inverse.h
 #ifndef INVERSE_H
 #define INVERSE_H
-#include <stdbool.h>
 
-// Returns a^{-1} mod n, or -1 if it doesn't exist (gcd != 1)
+/* Compute modular inverse: returns a^{-1} mod n in [0, n-1].
+ * If inverse does not exist (gcd != 1) returns -1.
+ */
 long long inverse(long long a, long long n);
-
-// Convenience checker
-bool has_inverse(long long a, long long n);
 
 #endif

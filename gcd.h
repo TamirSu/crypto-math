@@ -1,8 +1,11 @@
-// gcd.h
 #ifndef GCD_H
 #define GCD_H
 
-// Your function from gcd.c (types must match exactly)
-void GCD(int a, int b, int* gcd, int* m, int* n);
+/* Extended Euclidean algorithm
+ * Computes gcd = gcd(a,b) and integers x,y such that:
+ *    a*x + b*y = gcd
+ * All parameters are signed 64-bit (long long).
+ */
+void GCD(long long a, long long b, long long *gcd, long long *x, long long *y);
 
 #endif
